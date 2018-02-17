@@ -184,7 +184,9 @@ def game_loop():
         if thing_starty>display_height:
             doged+=1
             thing_speed+=1
+            thing_speed%=13
             thing_width+=(doged*1.2)
+            thing_width=thing_width%107
             thing_starty=0-thing_height
             thing_startx=random.randrange(0,display_width)
         
