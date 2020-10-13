@@ -30,8 +30,13 @@ bright_red=(255,0,0)
 bright_green=(0,255,0)
 blue=(0,0,255)
 
-
-
+def quit_game():
+     """
+    quit_game quits the game
+    """ 
+    pygame.quit()
+    quit()
+    
 def things_doged(count):
     font=pygame.font.Font(None,25)
     text=font.render("Doged:"+str(count),True,black)
@@ -67,8 +72,7 @@ def button(message,x,y,w,h,active_color,inactive_color,active=None):
                 if active=="play":
                     game_loop()
                 elif active=="quit":
-                    pygame.quit()
-                    quit()
+                    quit_game()
         else:
             pygame.draw.rect(gameDisplay,inactive_color,[x,y,w,h])
         font2=pygame.font.Font('freesansbold.ttf',25)
@@ -86,8 +90,7 @@ def pause():
     while True:
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
-                pygame.quit
-                quit()
+                quit_game()
 
             button("Continue",250,420,100,50,bright_green,green,"play")
             button("Quit",450,420,100,50,bright_red,red,"quit")
@@ -105,8 +108,7 @@ def crash():
     while True:
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
-                pygame.quit()
-                quit()
+                quit_game()
 
             button("Play Again",250,420,100,50,bright_green,green,"play")
             button("Quit",450,420,100,50,bright_red,red,"quit")
@@ -120,8 +122,7 @@ def game_intro():
     while intro:
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
-                pygame.quit()
-                quit()
+                quit_game()
 
         gameDisplay.fill(white)
         font=pygame.font.Font('freesansbold.ttf',115)
@@ -153,8 +154,7 @@ def game_loop():
         for event in pygame.event.get():
 
             if event.type==pygame.QUIT:
-                pygame.quit()
-                quit()
+                quit_game()
 
             if event.type==pygame.KEYDOWN:
                ## print(event)
@@ -203,5 +203,4 @@ def game_loop():
 if __name__ == "__main__" :
     game_intro()
     game_loop()
-    pygame.quit()
-    quit()
+    quit_game()
